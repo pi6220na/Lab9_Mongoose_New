@@ -15,7 +15,7 @@ mongoose.connect(db_url, {useMongoClient:true})
     .then( () => { console.log('Connected to MongoDB') } )
     .catch( (err) => { console.log('Error connecting to MongoDB', err); });
 
-mongoose.promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 
 var index = require('./routes/index');
