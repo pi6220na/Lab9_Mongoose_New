@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-var store = MongoDBStore( { uri: db_url, collection : 'tasks_sessions'} );
+var store = MongoDBStore( { uri: db_url, collection : 'sessions'} );
 // Configure flash messaging. Do this after cookieParser
 app.use(session( {
     secret: 'top secret',
