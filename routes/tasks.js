@@ -2,15 +2,19 @@ var express = require('express');
 var ObjectID = require('mongodb').ObjectId;
 var router = express.Router();
 var Task = require('../models/task');
+var tasks = require('../routes/tasks');
 
 
 
-
-///* GET home page. */
-//router.get('/', function(req, res, next) {
-//  res.render('index', { title: 'Express' });
-//});
-
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        console.log('user = ' + req.user);
+        console.log("isAuth = " + req.isAuthenticated());
+        next();
+    } else {
+        res.redirect('/auth');
+    }
+}
 
 /* GET home page with all incomplete tasks */
 /*
@@ -24,6 +28,8 @@ router.get('/', function(req, res, next) {
 
 });
 */
+
+router.use(isLoggedIn);
 
 router.get('/', function(req, res, next) {
 
